@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.egg-info/
+.claude/settings.local.json
+.edgar/
+.edgar_cache/
+.env
+.vendor/
+.vendor
+.env
+.vscode/
