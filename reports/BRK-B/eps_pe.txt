@@ -1,0 +1,34 @@
+EPS & P/E Analysis: BRK-B
+Current shares outstanding: 2,157M (2.16B)
+⚠️  yfinance sharesOutstanding (1,391M) disagrees with marketCap/price (2,157M) by 55.1%. This commonly happens for dual-class tickers (A/B shares). Using marketCap/price. VERIFY with the company's reported diluted shares.
+Share basis: current shares for all years (split-consistent, P/E approximate if buybacks)
+
+  Year   Net Inc ($M)      EPS  Yr-End Price     P/E  EPS Gr%  P/E Gr%
+----------------------------------------------------------------------
+  2016 $      24,074 $ 11.16 $     162.98   14.6x       --       --
+  2017 $      44,940 $ 20.84 $     198.22    9.5x    86.7%   -34.8%
+  2018 $       4,021 $  1.86 $     204.18  109.5x   -91.1%  1051.2%
+  2019 $      81,417 $ 37.75 $     226.50    6.0x  1924.8%   -94.5%
+  2020 $      42,521 $ 19.71 $     231.87   11.8x   -47.8%    96.0%
+  2021 $      89,795 $ 41.63 $     299.00    7.2x   111.2%   -38.9%
+  2022 $     -22,819 $-10.58 $     308.90     N/A       --       --
+  2023 $      96,223 $ 44.61 $     356.66    8.0x       --       --
+  2024 $      88,995 $ 41.26 $     453.28   11.0x    -7.5%    37.4%
+  2025 $      66,968 $ 31.05 $     502.65   16.2x   -24.8%    47.4%
+----------------------------------------------------------------------
+
+SUMMARY
+----------------------------------------
+EPS CAGR:                   12.0%
+Avg YoY EPS Growth:        278.8%
+Median YoY EPS Growth:      -7.5%
+EPS Growth Range:          -91.1% to 1924.8%
+
+Avg P/E:                    21.5x
+Median P/E:                 11.0x
+P/E Range:                   6.0x to 109.5x
+Avg YoY P/E Change:        152.0%
+Median YoY P/E Change:      37.4%
+
+Latest EPS:              $  31.05
+Latest P/E:                 16.2x

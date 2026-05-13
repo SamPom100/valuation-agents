@@ -43,7 +43,7 @@ def main():
     parser.add_argument("--axis", required=True,
                         choices=["growth x pe", "growth x discount", "pe x discount"],
                         help="Which two parameters to vary")
-    parser.add_argument("--growth", type=str, required=True, help="Comma-separated growth rates (%)")
+    parser.add_argument("--growth", type=str, required=True, help="Comma-separated growth rates (%%)")
     parser.add_argument("--pe", type=str, required=True, help="Comma-separated P/E values or single value")
     parser.add_argument("--discount-rate", type=str, required=True, help="Comma-separated discount rates or single value")
     args = parser.parse_args()

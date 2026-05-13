@@ -25,15 +25,53 @@ from typing import Dict
 import yfinance as yf
 
 
+def _resolve_shares(info: dict, ticker_symbol: str):
+    """
+    Resolve current share count robustly.
+
+    yfinance's sharesOutstanding returns only the queried class's float for
+    dual-class tickers (BRK-B, GOOG/GOOGL, BF-B, FOX/FOXA, etc.). marketCap
+    reflects the whole company. When they diverge materially, marketCap/price
+    is more reliable.
+
+    Returns (shares, warning_or_None).
+    """
+    shares = info.get("sharesOutstanding")
+    market_cap = info.get("marketCap")
+    price = info.get("currentPrice") or info.get("regularMarketPrice") or info.get("previousClose")
+
+    if shares is None and (market_cap is None or price is None):
+        print("ERROR: could not resolve share count from yfinance "
+              "(need sharesOutstanding OR marketCap+price)", file=sys.stderr)
+        sys.exit(1)
+
+    implied = (market_cap / price) if (market_cap and price) else None
+    warning = None
+
+    if shares and implied:
+        divergence = abs(implied - shares) / shares
+        if divergence > 0.05:
+            warning = (
+                f"⚠️  yfinance sharesOutstanding ({shares/1e6:,.0f}M) disagrees with "
+                f"marketCap/price ({implied/1e6:,.0f}M) by {divergence*100:.1f}%. "
+                f"This commonly happens for dual-class tickers (A/B shares). "
+                f"Using marketCap/price. "
+                f"VERIFY with the company's reported diluted shares."
+            )
+            return implied, warning
+        return shares, None
+
+    if implied:
+        return implied, None
+    return shares, None
+
+
 def compute(ticker_symbol: str, net_income: Dict[str, float],
             diluted_shares: Dict[str, float] = None) -> str:
     ticker = yf.Ticker(ticker_symbol)
     info = ticker.info
 
-    shares = info.get("sharesOutstanding")
-    if shares is None:
-        print("ERROR: could not get sharesOutstanding from yfinance", file=sys.stderr)
-        sys.exit(1)
+    shares, share_warning = _resolve_shares(info, ticker_symbol)
 
     shares_b = shares / 1e9
     shares_m = shares / 1e6
@@ -119,6 +157,8 @@ def compute(ticker_symbol: str, net_income: Dict[str, float],
     lines = []
     lines.append(f"EPS & P/E Analysis: {ticker_symbol.upper()}")
     lines.append(f"Current shares outstanding: {shares_m:,.0f}M ({shares_b:.2f}B)")
+    if share_warning:
+        lines.append(share_warning)
     if using_historical_shares:
         lines.append(f"Share basis: year-specific diluted shares (from income statement)")
     else:

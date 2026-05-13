@@ -1,0 +1,33 @@
+EPS & P/E Analysis: PYPL
+Current shares outstanding: 900M (0.90B)
+Share basis: current shares for all years (split-consistent, P/E approximate if buybacks)
+
+  Year   Net Inc ($M)      EPS  Yr-End Price     P/E  EPS Gr%  P/E Gr%
+----------------------------------------------------------------------
+  2016 $       1,401 $  1.56 $      39.26   25.2x       --       --
+  2017 $       1,795 $  2.00 $      73.23   36.7x    28.1%    45.6%
+  2018 $       2,057 $  2.29 $      83.64   36.6x    14.6%    -0.3%
+  2019 $       2,459 $  2.73 $     107.59   39.4x    19.5%     7.6%
+  2020 $       4,202 $  4.67 $     232.95   49.9x    70.9%    26.7%
+  2021 $       4,169 $  4.63 $     187.58   40.5x    -0.8%   -18.8%
+  2022 $       2,419 $  2.69 $      70.84   26.3x   -42.0%   -34.9%
+  2023 $       4,246 $  4.72 $      61.08   12.9x    75.5%   -50.9%
+  2024 $       4,147 $  4.61 $      84.90   18.4x    -2.3%    42.3%
+  2025 $       5,233 $  5.82 $      58.20   10.0x    26.2%   -45.7%
+----------------------------------------------------------------------
+
+SUMMARY
+----------------------------------------
+EPS CAGR:                   15.8%
+Avg YoY EPS Growth:         21.1%
+Median YoY EPS Growth:      19.5%
+EPS Growth Range:          -42.0% to 75.5%
+
+Avg P/E:                    29.6x
+Median P/E:                 31.5x
+P/E Range:                  10.0x to 49.9x
+Avg YoY P/E Change:         -3.2%
+Median YoY P/E Change:      -0.3%
+
+Latest EPS:              $   5.82
+Latest P/E:                 10.0x

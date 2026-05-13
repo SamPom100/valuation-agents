@@ -36,8 +36,27 @@ def fetch(ticker_symbol: str) -> str:
     info = ticker.info
     beta = info.get("beta")
     price = info.get("currentPrice") or info.get("regularMarketPrice") or info.get("previousClose")
-    shares = info.get("sharesOutstanding")
+    shares_raw = info.get("sharesOutstanding")
     market_cap = info.get("marketCap")
+
+    # Resolve share count: yfinance's sharesOutstanding returns only the queried
+    # class's float for dual-class tickers (BRK-B, GOOG/GOOGL, BF-B). marketCap
+    # is firm-wide. When they diverge materially, marketCap/price is more
+    # reliable and we flag a warning.
+    share_warning = None
+    shares = shares_raw
+    if shares_raw and market_cap and price:
+        implied = market_cap / price
+        divergence = abs(implied - shares_raw) / shares_raw
+        if divergence > 0.05:
+            share_warning = (
+                f"⚠️  sharesOutstanding ({shares_raw/1e6:,.0f}M) disagrees with "
+                f"marketCap/price ({implied/1e6:,.0f}M) by {divergence*100:.1f}%. "
+                f"Common for dual-class tickers (A/B). Using marketCap/price."
+            )
+            shares = implied
+    elif not shares_raw and market_cap and price:
+        shares = market_cap / price
 
     # --- S&P 500 data for ERP ---
     spy = yf.Ticker("SPY")
@@ -82,6 +101,8 @@ def fetch(ticker_symbol: str) -> str:
         lines.append(f"  Current Price:             ${price:,.2f}")
     if shares is not None:
         lines.append(f"  Shares Outstanding:        {shares / 1e6:,.0f}M")
+    if share_warning:
+        lines.append(f"  {share_warning}")
     if market_cap is not None:
         lines.append(f"  Market Cap:                ${market_cap / 1e9:,.0f}B")
 

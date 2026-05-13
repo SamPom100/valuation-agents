@@ -1,0 +1,28 @@
+EPS & P/E Analysis: HOOD
+Current shares outstanding: 790M (0.79B)
+Share basis: current shares for all years (split-consistent, P/E approximate if buybacks)
+
+  Year   Net Inc ($M)      EPS  Yr-End Price     P/E  EPS Gr%  P/E Gr%
+----------------------------------------------------------------------
+  2021 $      -3,686 $ -4.67 $      17.76     N/A       --       --
+  2022 $      -1,028 $ -1.30 $       8.14     N/A       --       --
+  2023 $        -541 $ -0.68 $      12.74     N/A       --       --
+  2024 $       1,411 $  1.79 $      37.26   20.9x       --       --
+  2025 $       1,883 $  2.38 $     113.10   47.5x    33.5%   127.5%
+----------------------------------------------------------------------
+
+SUMMARY
+----------------------------------------
+EPS CAGR:                    7.5%
+Avg YoY EPS Growth:         33.5%
+Median YoY EPS Growth:      33.5%
+EPS Growth Range:           33.5% to 33.5%
+
+Avg P/E:                    34.2x
+Median P/E:                 34.2x
+P/E Range:                  20.9x to 47.5x
+Avg YoY P/E Change:        127.5%
+Median YoY P/E Change:     127.5%
+
+Latest EPS:              $   2.38
+Latest P/E:                 47.5x
